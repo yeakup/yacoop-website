@@ -71,7 +71,7 @@ function AboutUs() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6">
               Our Services
             </h2>
-            <p className="text-2xl md:text-[26.67px] text-gray-600 max-w-5xl mx-auto leading-relaxed px-4">
+            <p className="text-2xl md:text-[26.67px] text-gray-600 max-w-none md:max-w-5xl mx-auto leading-relaxed px-2 md:px-4">
               We specialize in creating comprehensive digital solutions that drive your business forward.
               From stunning designs to powerful development and seamless content management.
             </p>

@@ -119,7 +119,7 @@ function Contact() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 text-white">
               Contact Us
             </h2>
-            <p className="text-2xl md:text-[26.67px] text-gray-300 max-w-5xl mx-auto leading-relaxed px-4">
+            <p className="text-2xl md:text-[26.67px] text-gray-300 max-w-none md:max-w-6xl mx-auto leading-relaxed px-2 md:px-4">
               Let's start a conversation about your next project. 
               We're here to help you create something amazing.
             </p>

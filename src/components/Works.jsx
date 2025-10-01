@@ -114,7 +114,7 @@ function Works() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6">
               Our Work
             </h2>
-            <p className="text-2xl md:text-[26.67px] text-gray-600 max-w-5xl mx-auto leading-relaxed px-4">
+            <p className="text-2xl md:text-[26.67px] text-gray-600 max-w-none md:max-w-5xl mx-auto leading-relaxed px-2 md:px-4">
               Discover our portfolio of innovative digital solutions. From stunning websites to powerful applications,
               we craft experiences that drive results and exceed expectations.
             </p>
@@ -136,7 +136,7 @@ function Works() {
             {canGoLeft && (
               <button
                 onClick={goLeft}
-                className="absolute left-[-5rem] top-1/2 -translate-y-1/2 z-30 bg-black hover:bg-gray-800 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+                className="hidden lg:block absolute left-[-5rem] top-1/2 -translate-y-1/2 z-30 bg-black hover:bg-gray-800 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
               >
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -147,7 +147,7 @@ function Works() {
             {canGoRight && (
               <button
                 onClick={goRight}
-                className="absolute right-[-5rem] top-1/2 -translate-y-1/2 z-30 bg-black hover:bg-gray-800 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+                className="hidden lg:block absolute right-[-5rem] top-1/2 -translate-y-1/2 z-30 bg-black hover:bg-gray-800 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
               >
                 <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
