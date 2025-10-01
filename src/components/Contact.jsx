@@ -11,7 +11,7 @@ function Contact() {
 
   // Transform values for header animation - same as Works/About
   const headerY = useTransform(scrollYProgress, [0, 0.25], ["0vh", "-30vh"])
-  const headerScale = useTransform(scrollYProgress, [0, 0.25], [1.3, 0.6])
+  const headerScale = useTransform(scrollYProgress, [0, 0.25], [1.5, 0.6])
   const contentY = useTransform(scrollYProgress, [0.25, 0.35], ["100vh", "0px"])
 
   // After content is visible, scroll everything together
@@ -119,7 +119,7 @@ function Contact() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6 text-white">
               Contact Us
             </h2>
-            <p className="text-xl md:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed px-4">
+            <p className="text-2xl md:text-[26.67px] text-gray-300 max-w-5xl mx-auto leading-relaxed px-4">
               Let's start a conversation about your next project. 
               We're here to help you create something amazing.
             </p>

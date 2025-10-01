@@ -24,7 +24,7 @@ function Hero() {
   }
 
   return (
-    <section id="home" className="min-h-screen bg-gray-50 flex items-center justify-center py-8 md:py-16">
+    <section id="home" className="min-h-screen bg-gray-50 flex items-center justify-center pt-0 md:pt-0 pb-8 md:pb-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[calc(100vh-160px)] md:min-h-[calc(100vh-120px)]">
           

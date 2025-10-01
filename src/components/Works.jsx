@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 function Works() {
   const containerRef = useRef(null)
@@ -8,9 +8,14 @@ function Works() {
     offset: ["start end", "end start"]
   })
 
+  // Carousel state
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isInitialLoad, setIsInitialLoad] = useState(true)
+  const itemsPerPage = 3
+
   // Transform values for header animation
   const headerY = useTransform(scrollYProgress, [0, 0.25], ["0vh", "-30vh"])
-  const headerScale = useTransform(scrollYProgress, [0, 0.25], [1.3, 0.6]) // Bigger final size
+  const headerScale = useTransform(scrollYProgress, [0, 0.25], [1.5, 0.6]) // Bigger final size
   const cardsOpacity = useTransform(scrollYProgress, [0.25, 0.35], [0, 1])
   const cardsY = useTransform(scrollYProgress, [0.25, 0.35], ["30px", "0px"])
 
@@ -24,7 +29,7 @@ function Works() {
       subtitle: "Modern online shopping experience",
       tags: ["Web Design", "Web Development", "CMS"],
       color: "bg-gradient-to-br from-gray-800 to-gray-600",
-      shape: "rounded-3xl"
+      shape: "rounded-tr-3xl rounded-br-3xl rounded-bl-3xl"
     },
     {
       id: 2,
@@ -32,7 +37,7 @@ function Works() {
       subtitle: "Professional business presence",
       tags: ["Web Design", "Web Development"],
       color: "bg-gradient-to-br from-gray-800 to-gray-600",
-      shape: "rounded-2xl"
+      shape: "rounded-tr-3xl rounded-br-3xl rounded-bl-3xl"
     },
     {
       id: 3,
@@ -40,12 +45,51 @@ function Works() {
       subtitle: "Intuitive user experience",
       tags: ["Web Design", "Web Development", "CMS"],
       color: "bg-gradient-to-br from-gray-800 to-gray-600",
-      shape: "rounded-3xl"
+      shape: "rounded-tr-3xl rounded-br-3xl rounded-bl-3xl"
     },
-    
+    {
+      id: 4,
+      title: "Corporate Dashboard",
+      subtitle: "Data visualization and analytics",
+      tags: ["Web Development", "UI/UX", "Analytics"],
+      color: "bg-gradient-to-br from-gray-800 to-gray-600",
+      shape: "rounded-tr-3xl rounded-br-3xl rounded-bl-3xl"
+    },
+    {
+      id: 5,
+      title: "Mobile App Design",
+      subtitle: "Cross-platform mobile solution",
+      tags: ["Mobile Design", "UI/UX", "Prototyping"],
+      color: "bg-gradient-to-br from-gray-800 to-gray-600",
+      shape: "rounded-tr-3xl rounded-br-3xl rounded-bl-3xl"
+    },
+    {
+      id: 6,
+      title: "Restaurant Website",
+      subtitle: "Online ordering and reservations",
+      tags: ["Web Design", "Web Development", "E-commerce"],
+      color: "bg-gradient-to-br from-gray-800 to-gray-600",
+      shape: "rounded-tr-3xl rounded-br-3xl rounded-bl-3xl"
+    },
   ]
 
+  // Carousel navigation functions
+  const maxIndex = Math.max(0, works.length - itemsPerPage)
+  const canGoLeft = currentIndex > 0
+  const canGoRight = currentIndex < maxIndex
 
+  const goLeft = () => {
+    setCurrentIndex(prev => Math.max(0, prev - 1))
+    setIsInitialLoad(false)
+  }
+
+  const goRight = () => {
+    setCurrentIndex(prev => Math.min(maxIndex, prev + 1))
+    setIsInitialLoad(false)
+  }
+
+  // Get visible works
+  const visibleWorks = works.slice(currentIndex, currentIndex + itemsPerPage)
 
   return (
     <section
@@ -70,7 +114,7 @@ function Works() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6">
               Our Work
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">
+            <p className="text-2xl md:text-[26.67px] text-gray-600 max-w-5xl mx-auto leading-relaxed px-4">
               Discover our portfolio of innovative digital solutions. From stunning websites to powerful applications,
               we craft experiences that drive results and exceed expectations.
             </p>
@@ -87,22 +131,47 @@ function Works() {
           }}
         >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10" style={{ minHeight: '100vh' }}>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 h-full">
-            {works.map((work, index) => (
+          <div className="relative grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 h-full">
+            {/* Navigation Arrows */}
+            {canGoLeft && (
+              <button
+                onClick={goLeft}
+                className="absolute left-[-5rem] top-1/2 -translate-y-1/2 z-30 bg-black hover:bg-gray-800 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+              >
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+            )}
+
+            {canGoRight && (
+              <button
+                onClick={goRight}
+                className="absolute right-[-5rem] top-1/2 -translate-y-1/2 z-30 bg-black hover:bg-gray-800 shadow-lg rounded-full p-3 transition-all duration-300 hover:scale-110"
+              >
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            )}
+            {visibleWorks.map((work, index) => (
             <motion.div
               key={work.id}
               className={`group relative aspect-[3/2] ${work.color} ${work.shape} overflow-hidden cursor-pointer`}
-              initial={{ opacity: 0, y: 80, scale: 0.8 }}
-              whileInView={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{
+              initial={isInitialLoad ? { opacity: 0, y: 80, scale: 0.8 } : { opacity: 1, y: 0, scale: 1 }}
+              whileInView={isInitialLoad ? { opacity: 1, y: 0, scale: 1 } : { opacity: 1, y: 0, scale: 1 }}
+              transition={isInitialLoad ? {
                 duration: 0.8,
                 delay: index * 0.15,
                 ease: [0.25, 0.46, 0.45, 0.94]
+              } : {
+                duration: 0.3,
+                ease: "easeOut"
               }}
               viewport={{ once: true, margin: "-50px" }}
             >
                 {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-6">
+                <div className={`absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-6 ${work.shape}`}>
                   <div className="mb-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-100">
                     <img
                       src="/yacoop.png"

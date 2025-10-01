@@ -18,7 +18,6 @@ function App() {
       document.body.classList.remove('loading')
     }
 
-    // Cleanup on unmount
     return () => {
       document.body.classList.remove('loading')
     }
@@ -29,26 +28,16 @@ function App() {
   }
   return (
     <div className="font-clash">
-      {/* Loading Screen */}
       {isLoading && (
         <LoadingScreen onLoadingComplete={handleLoadingComplete} />
       )}
 
       {/* Main App Content */}
       <Navigation />
-
-      {/* Main Content with padding-top to account for fixed navigation */}
       <main className="pt-[80px]">
-        {/* Hero Section */}
         <Hero />
-
-        {/* Work Section */}
         <Works />
-
-        {/* About Section */}
         <AboutUs />
-
-        {/* Contact Section */}
         <Contact />
       </main>
     </div>

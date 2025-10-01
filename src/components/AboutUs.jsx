@@ -10,7 +10,7 @@ function AboutUs() {
 
   // Transform values for header animation - same as Works
   const headerY = useTransform(scrollYProgress, [0, 0.25], ["0vh", "-30vh"])
-  const headerScale = useTransform(scrollYProgress, [0, 0.25], [1.3, 0.6])
+  const headerScale = useTransform(scrollYProgress, [0, 0.25], [1.5, 0.6])
   const cardsOpacity = useTransform(scrollYProgress, [0.25, 0.35], [0, 1])
   const cardsY = useTransform(scrollYProgress, [0.25, 0.35], ["30px", "0px"])
 
@@ -22,28 +22,28 @@ function AboutUs() {
     {
       id: 1,
       title: "Web Design",
-      description: "Creating visually stunning and user-friendly interfaces that captivate your audience. We focus on modern aesthetics, intuitive navigation, and responsive design that works perfectly across all devices.",
-      icon: "🎨",
-      color: "bg-gradient-to-br from-gray-900 to-gray-700",
-      shape: "rounded-2xl",
+      description: "Bringing your ideas to life with stunning, interactive designs. Our focus is on eye-catching visuals, smooth user journeys, and layouts that make your website shine on all devices.",
+      icon: "design",
+      color: "bg-gradient-to-br from-gray-600 to-gray-500",
+      shape: "rounded-tr-3xl rounded-br-3xl rounded-bl-3xl",
       accent: "border-l-4 border-white"
     },
     {
       id: 2,
       title: "Web Development",
       description: "Building robust, scalable, and high-performance websites using cutting-edge technologies. From frontend frameworks to backend solutions, we deliver code that's clean, efficient, and maintainable.",
-      icon: "💻",
-      color: "bg-gradient-to-br from-gray-800 to-black",
-      shape: "rounded-3xl",
+      icon: "code",
+      color: "bg-gradient-to-br from-gray-800 to-gray-700",
+      shape: "rounded-tr-3xl rounded-br-3xl rounded-bl-3xl",
       accent: "border-t-4 border-gray-300"
     },
     {
       id: 3,
       title: "CMS",
       description: "Implementing powerful content management systems that give you full control over your website. Easy-to-use interfaces that allow you to update content, manage media, and maintain your site effortlessly.",
-      icon: "⚙️",
-      color: "bg-gradient-to-br from-gray-600 to-gray-800",
-      shape: "rounded-2xl",
+      icon: "settings",
+      color: "bg-gradient-to-br from-gray-900 to-black",
+      shape: "rounded-tr-3xl rounded-br-3xl rounded-bl-3xl",
       accent: "border-r-4 border-gray-200"
     }
   ]
@@ -71,7 +71,7 @@ function AboutUs() {
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold mb-6">
               Our Services
             </h2>
-            <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed px-4">
+            <p className="text-2xl md:text-[26.67px] text-gray-600 max-w-5xl mx-auto leading-relaxed px-4">
               We specialize in creating comprehensive digital solutions that drive your business forward.
               From stunning designs to powerful development and seamless content management.
             </p>
@@ -104,8 +104,24 @@ function AboutUs() {
                   whileHover={{ scale: 1.02, y: -5 }}
                 >
                   {/* Header with Icon */}
-                  <div className="flex items-center justify-between mb-6">
-                    <div className="text-4xl">{service.icon}
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                      {service.icon === 'design' && (
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                        </svg>
+                      )}
+                      {service.icon === 'code' && (
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                        </svg>
+                      )}
+                      {service.icon === 'settings' && (
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                      )}
                     </div>
                   </div>
 
@@ -117,15 +133,7 @@ function AboutUs() {
                     </p>
                   </div>
 
-                  {/* Bottom section */}
-                  <div className="flex items-center justify-between pt-4 border-t border-white/10">
-                    <span className="text-sm text-gray-300 font-medium">Learn More</span>
-                    <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center group-hover:bg-white/30 transition-colors duration-300">
-                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                  </div>
+
 
                   {/* Hover effect overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
