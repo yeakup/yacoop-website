@@ -134,7 +134,7 @@ function Contact() {
             marginTop: "-70vh"
           }}
         >
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16" style={{ minHeight: '100vh' }}>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-16 py-8" style={{ minHeight: '100vh' }}>
             
             {/* Contact Form */}
             <motion.div
@@ -144,7 +144,16 @@ function Contact() {
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
-              <div className="text-center mb-12">
+              <div className="text-center mb-8">
+                {/* Message Icon */}
+                <div className="flex justify-center mb-6">
+                  <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                </div>
+
                 <p className="text-lg text-gray-600">
                   Tell us about your project and we'll try to get back to you within 24 hours.
                 </p>
@@ -204,7 +213,7 @@ function Contact() {
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    rows={6}
+                    rows={5}
                     className={`w-full px-4 py-3 border rounded-xl focus:ring-2 focus:border-transparent transition-all duration-300 text-gray-900 placeholder-gray-500 resize-none ${
                       errors.message
                         ? 'border-red-500 focus:ring-red-500'
@@ -217,7 +226,7 @@ function Contact() {
                   )}
                 </div>
 
-                <div className="text-center pt-4">
+                <div className="text-center pt-2">
                   <button
                     type="submit"
                     className="bg-black text-white px-10 py-5 rounded-full font-semibold text-xl hover:bg-gray-900 transition-all duration-300 hover:scale-105 hover:shadow-lg"

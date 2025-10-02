@@ -35,7 +35,7 @@ function AboutUs() {
       icon: "code",
       color: "bg-gradient-to-br from-gray-800 to-gray-700",
       shape: "rounded-tr-3xl rounded-br-3xl rounded-bl-3xl",
-      accent: "border-t-4 border-gray-300"
+      accent: "border-l-4 border-white"
     },
     {
       id: 3,
@@ -178,3 +178,4 @@ function AboutUs() {
 }
 
 export default AboutUs
+
